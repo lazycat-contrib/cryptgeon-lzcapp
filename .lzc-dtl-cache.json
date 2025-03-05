@@ -1,0 +1,46 @@
+{
+  "name": "加密鸽",
+  "package": "cloud.lazycat.app.cryptgeon",
+  "description": "一个受 PrivNote项目启发的安全、开源共享密信和文件共享服务器",
+  "homepage": "https://github.com/cupcakearmy/cryptgeon",
+  "author": "cupcakearmy",
+  "app_features": [
+    "background_task",
+    "public_path"
+  ],
+  "subdomain": "cryptgeon",
+  "version": "2.9.1",
+  "public_paths": [
+    "/"
+  ],
+  "iconPath": "icon.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "app_80_8000": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    },
+    "cryptgeon-app_80_8000": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    }
+  },
+  "image_redis_7-alpine": {
+    "originalImage": "redis:7-alpine",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/czyt/library/redis:519f0189dfdee3bc",
+    "timestamp": "2025-03-05T14:58:21.652Z"
+  },
+  "image_cupcakearmy_cryptgeon_latest": {
+    "originalImage": "cupcakearmy/cryptgeon:latest",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/czyt/cupcakearmy/cryptgeon:a1d8a9f6b5f69cfd",
+    "timestamp": "2025-03-05T15:00:25.073Z"
+  }
+}

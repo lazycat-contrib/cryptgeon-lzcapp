@@ -1,0 +1,36 @@
+lzc-sdk-version: "0.1"
+name: 加密鸽
+package: cloud.lazycat.app.cryptgeon
+version: 2.9.1
+description: 一个受 PrivNote项目启发的安全、开源共享密信和文件共享服务器
+homepage: https://github.com/cupcakearmy/cryptgeon
+author: cupcakearmy
+application:
+  subdomain: cryptgeon
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  public_path:
+    - /
+  routes:
+    - /=http://cryptgeon-app.cloud.lazycat.app.cryptgeon.lzcapp:8000/
+services:
+  redis:
+    image: registry.lazycat.cloud/czyt/library/redis:519f0189dfdee3bc
+    command: redis-server --save "" --appendonly no
+    tmpfs:
+      - /data
+      
+  cryptgeon-app:
+    image: registry.lazycat.cloud/czyt/cupcakearmy/cryptgeon:a1d8a9f6b5f69cfd
+    environment:
+      - SIZE_LIMIT=4 MiB
+    depends_on:
+      - redis
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - "curl --fail http://127.0.0.1:8000/api/live/"
+      start_period: 30s
