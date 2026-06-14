@@ -1,0 +1,15 @@
+package: cloud.lazycat.app.cryptgeon
+version: 2.9.2
+name: 加密鸽
+description: 一个受 PrivNote项目启发的安全、开源共享密信和文件共享服务器
+min_os_version: 1.5.0
+homepage: https://github.com/cupcakearmy/cryptgeon
+author: cupcakearmy
+
+locales:
+  zh:
+    name: "加密鸽"
+    description: "一个受 PrivNote项目启发的安全、开源共享密信和文件共享服务器"
+  en:
+    name: "Cryptgeon"
+    description: "A secure, open source sharing note and file sharing server inspired by PrivNote"
