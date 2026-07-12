@@ -10,17 +10,16 @@ application:
   upstreams:
     - location: /
       backend: http://cryptgeon-app:8000/
-
 services:
   redis:
     image: registry.lazycat.cloud/czyt/library/redis:519f0189dfdee3bc
     command: redis-server --save "" --appendonly no
     tmpfs:
       - /data
-
   cryptgeon-app:
     #  cupcakearmy/cryptgeon:2.9.2
-    image: registry.lazycat.cloud/czyt/cupcakearmy/cryptgeon:a0b2ad4d22c8711c
+    # upstream: cupcakearmy/cryptgeon:2.9.3
+    image: registry.lazycat.cloud/czyt/cupcakearmy/cryptgeon:da63a80749a7fa55
     environment:
       - SIZE_LIMIT=4 MiB
     depends_on:
