@@ -1,0 +1,33 @@
+version: 1
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/cryptgeon.lpk
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: cryptgeon
+build:
+  run_buildscript: false
+images:
+  - id: cryptgeon
+    target: service
+    service: cryptgeon-app
+    source: cupcakearmy/cryptgeon
+    channel: stable
+    tag_regex: '^v?[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: lazycat
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Cryptgeon
+    summary: 安全、开源的阅后即焚密信和文件分享服务
+
