@@ -1,4 +1,5 @@
 package: cloud.lazycat.app.cryptgeon
+license: MIT
 version: 2.9.3
 name: 加密鸽
 description: 一个受 PrivNote项目启发的安全、开源共享密信和文件共享服务器
